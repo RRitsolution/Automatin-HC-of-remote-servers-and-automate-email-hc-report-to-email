@@ -151,7 +151,7 @@
   hosts: localhost
   tasks:
     - name: Mergre all servers HC report to one fianl report
-      shell: cat /tmp/reports/*.txt > /tmp/reports/Finalhcreport.txt
+      shell: rm -rf /tmp/reports/Finalhcreport.txt && cat /tmp/reports/*.txt > /tmp/reports/Finalhcreport.txt
       
     - name: Sending HC report to 
       community.general.mail:
@@ -164,8 +164,16 @@
          subject: "Server automation HC report"
          body:
            Hello Devopsuser,
+
+
+
                  Please find HC reprt.
+
+
+                 BR//
+                 Automation HC  Server ! 
          attach:
-            - /tmp/Finalhcreport.txt
+            - /tmp/reports/Finalhcreport.txt
          secure: starttls
     
+
